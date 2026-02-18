@@ -1,18 +1,18 @@
 import { Routes } from '@angular/router';
 
 export const SPECIES_ROUTES: Routes = [
-//   {
-//     path: '',
-//     loadComponent: () =>
-//       import('./pages/species-list/species-list.page')
-//         .then(m => m.SpeciesListPage)
-//   },
-   {
-    path: ':id',
+  {
+    path: '',
     loadComponent: () =>
-      import('./pages/species-details/species-details.page')
-        .then(m => m.SpeciesDetailsPage)
+      import('./pages/species-list/species-list.page')
+        .then(m => m.SpeciesListPage)
   },
+//  {
+//   path: ':id',
+//   loadComponent: () =>
+//     import('./pages/species-details/species-details.page')
+//       .then(m => m.SpeciesDetailsPage)
+// },
 //   {
 //     path: ':id/edit',
 //     loadComponent: () =>
