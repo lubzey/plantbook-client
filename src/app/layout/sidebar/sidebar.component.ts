@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -40,10 +41,16 @@ export interface SidebarItem {
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(window:resize)': 'onResize()'
+  }
 })
-export class SidebarComponent {
-  isLeftSidebarCollapsed = input.required<boolean>();
-  changeIsLeftSidebarCollapsed = output<boolean>();
+export class SidebarComponent implements OnInit {
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+  isLeftSidebarCollapsed = signal<boolean>(false);
+  screenWidth = signal<number>(0);
 
   // Icons for the header
   faBars = faBars;
@@ -76,7 +83,25 @@ export class SidebarComponent {
     },
   ];
 
+  ngOnInit(): void {
+    if (this.isBrowser) {
+      this.screenWidth.set(window.innerWidth);
+      this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
+    }
+  }
+
+  onResize(): void {
+    if (this.isBrowser) {
+      this.screenWidth.set(window.innerWidth);
+      if (this.screenWidth() < 768) {
+        this.isLeftSidebarCollapsed.set(true);
+      } else {
+        this.isLeftSidebarCollapsed.set(false);
+      }
+    }
+  }
+
   toggleCollapse(): void {
-    this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed());
+    this.isLeftSidebarCollapsed.set(!this.isLeftSidebarCollapsed());
   }
 }
