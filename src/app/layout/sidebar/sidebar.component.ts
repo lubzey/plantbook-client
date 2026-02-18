@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, signal, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -36,7 +36,6 @@ export interface SidebarItem {
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(window:resize)': 'onResize()'
   }
