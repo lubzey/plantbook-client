@@ -94,6 +94,16 @@
     .sidenav-link-text {
       color: #bff4c9;
     }
+
+    &:hover {
+      background-color: #bff4c9;
+      color: #013824;
+
+      .sidenav-link-icon,
+      .sidenav-link-text {
+        color: #013824;
+      }
+    }
   }
 }
 

@@ -50,7 +50,7 @@ export class SidebarComponent {
 
   items: SidebarItem[] = [
     {
-      routeLink: 'home',
+      routeLink: '',
       icon: faHouse,
       label: 'Home',
     },
