@@ -23,9 +23,9 @@
   gap: 1rem;
   min-height: 64px;
 
-  .logo {
+  .logo-button {
     background: #fff;
-    color: #012a5b;
+    padding-top: 12px;
     width: 3rem;
     height: 3rem;
     min-width: 3rem;
@@ -39,6 +39,27 @@
 
     fa-icon {
       font-size: 20px;
+      color: #013824;
+      transition: color 0.2s ease;
+    }
+
+    // Hover: background color change, no ripple
+    &:hover {
+      background-color: #bff4c9;
+    }
+
+    // Remove hover ripple effect
+    &:hover ::ng-deep .mat-mdc-button-persistent-ripple {
+      opacity: 0;
+    }
+
+    // Click: bigger ripple with default Material color
+    ::ng-deep .mat-mdc-button-ripple {
+      border-radius: 0.313rem;
+    }
+
+    ::ng-deep .mat-ripple-element {
+      animation: mat-ripple-animation 600ms ease-out;
     }
   }
 

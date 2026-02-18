@@ -11,7 +11,7 @@
     [class.sidenav-collapsed]="isLeftSidebarCollapsed()"
   >
     <mat-toolbar class="logo-container">
-      <button mat-icon-button class="logo" (click)="toggleCollapse()">
+      <button mat-icon-button class="logo-button" (click)="toggleCollapse()">
         <fa-icon [icon]="faBars" />
       </button>
       @if (!isLeftSidebarCollapsed()) {
