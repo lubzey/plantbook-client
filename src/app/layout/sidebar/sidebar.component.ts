@@ -10,12 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faHouse,
   faSeedling,
-  faBoxOpen,
   faTrowel,
-  faFile,
-  faGear,
   faBars,
-  faWarehouse,
   faDiagramProject,
   faCartShopping,
   IconDefinition
