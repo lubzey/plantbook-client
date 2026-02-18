@@ -1,14 +1,22 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faHouse,
+  faSeedling,
   faBoxOpen,
+  faTrowel,
   faFile,
   faGear,
   faBars,
   faWarehouse,
+  faDiagramProject,
+  faCartShopping,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,7 +28,15 @@ export interface SidebarItem {
 
 @Component({
   selector: 'sidebar',
-  imports: [RouterModule, CommonModule, FontAwesomeModule],
+  imports: [
+    RouterModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    FontAwesomeModule
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,29 +50,29 @@ export class SidebarComponent {
 
   items: SidebarItem[] = [
     {
-      routeLink: 'dashboard',
+      routeLink: 'home',
       icon: faHouse,
-      label: 'Dashboard',
+      label: 'Home',
     },
     {
       routeLink: 'species',
-      icon: faBoxOpen,
+      icon: faSeedling,
       label: 'Species',
     },
     {
       routeLink: 'varieties',
-      icon: faFile,
+      icon: faDiagramProject,
       label: 'Varieties',
     },
     {
-      routeLink: 'nurseries',
-      icon: faGear,
-      label: 'Nurseries',
+      routeLink: 'gardens',
+      icon: faTrowel,
+      label: 'Gardens',
     },
     {
-      routeLink: 'gardens',
-      icon: faWarehouse,
-      label: 'Gardens',
+      routeLink: 'nurseries',
+      icon: faCartShopping, // faGear,
+      label: 'Nurseries',
     },
   ];
 

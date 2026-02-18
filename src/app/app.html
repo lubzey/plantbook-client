@@ -1,5 +1,6 @@
 <sidebar
   [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
   (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
-/>
-<main></main>
+>
+  <router-outlet />
+</sidebar>

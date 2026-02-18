@@ -1,30 +1,43 @@
-<div
-  class="sidenav"
-  [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''"
+<mat-sidenav-container
+  autosize
+  class="sidenav-container"
+  [class.sidebar-collapsed]="isLeftSidebarCollapsed()"
 >
-  <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">
-      <fa-icon [icon]="faBars" />
-    </button>
-    @if (!isLeftSidebarCollapsed()) {
-      <div class="logo-text">plantbook</div>
-    }
-  </div>
-  <div class="sidenav-nav">
-    @for (item of items; track $index) {
-      <li class="sidenav-nav-item">
+  <mat-sidenav
+    #sidenav
+    [mode]="'side'"
+    [opened]="true"
+    class="sidenav"
+    [class.sidenav-collapsed]="isLeftSidebarCollapsed()"
+  >
+    <mat-toolbar class="logo-container">
+      <button mat-icon-button class="logo" (click)="toggleCollapse()">
+        <fa-icon [icon]="faBars" />
+      </button>
+      @if (!isLeftSidebarCollapsed()) {
+        <span class="logo-text">plantbook</span>
+      }
+    </mat-toolbar>
+
+    <mat-nav-list class="sidenav-nav">
+      @for (item of items; track $index) {
         <a
-          class="sidenav-nav-link"
+          mat-list-item
           [routerLink]="item.routeLink"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
+          class="sidenav-nav-link"
         >
-          <fa-icon [icon]="item.icon" class="sidenav-link-icon" />
+          <fa-icon [icon]="item.icon" class="sidenav-link-icon" matListItemIcon />
           @if (!isLeftSidebarCollapsed()) {
-            <span class="sidenav-link-text">{{ item.label }}</span>
+            <span matListItemTitle class="sidenav-link-text">{{ item.label }}</span>
           }
         </a>
-      </li>
-    }
-  </div>
-</div>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content />
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -3,12 +3,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSeedling, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'home',
   imports: [FontAwesomeModule],
-  templateUrl: './dashboard.page.html',
-  styleUrl: './dashboard.page.scss',
+  templateUrl: './home.page.html',
+  styleUrl: './home.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardPage {
+export class HomePage {
   faSeedling: IconDefinition = faSeedling;
 }
+
