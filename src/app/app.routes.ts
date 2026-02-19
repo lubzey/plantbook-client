@@ -21,5 +21,9 @@ export const routes: Routes = [
     {
         path: 'nurseries',
         loadComponent: () => import('./features/nurseries/pages/nurseries-list/nurseries-list.page').then(m => m.NurseriesListPage)
+    },
+    {
+        path: '**',
+        redirectTo: '',
     }
 ];
