@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
+import { SpeciesListPage } from './pages/species-list/species-list.page';
 
 export const SPECIES_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./pages/species-list/species-list.page')
-        .then(m => m.SpeciesListPage)
+    component: SpeciesListPage
   },
 //  {
 //   path: ':id',
